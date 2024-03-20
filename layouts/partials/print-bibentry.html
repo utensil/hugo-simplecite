@@ -10,7 +10,7 @@
 {{- end -}}
 
 {{- $style := "apa" -}}
-{{- $stylePath := "styles/$style/main.html" -}}
+{{- $stylePath := printf "styles/%s/main.html" $style -}}
 {{- $bibentries := partial "get-bibentries" $context -}}
 {{- $bibentry := partial "get-bibentry" (dict "context" $context "bibentries" $bibentries "bibentryId" $bibentryId) -}}
 
