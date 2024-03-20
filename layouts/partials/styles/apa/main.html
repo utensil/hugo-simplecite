@@ -1,23 +1,33 @@
-{{/* 
-https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
+{{/*
+    APA-Style Citation
+
+    Book Template : 
+  
+      Author Surname, First Initial. Second Initial. (Year). <i>Book title: Subtitle</i>. Place of Publication: Publisher. [DOI]
+  
+    Journal Template:
+  
+      Author, I. N. (Year). Title of the article. <i>Title of the Journal or Periodical, volume number(issue number)</i>, page numbers. [DOI]
+  
+    https://apastyle.apa.org/style-grammar-guidelines/references/examples
 */}}
 
 {{- $context := index . "context" -}}
 {{- $bibentry := index . "bibentry" -}}
 
 {{- if eq $bibentry.type "book" -}}
-{{- partial "styles/ieee/types/book" $bibentry -}}
+{{- partial "styles/apa/types/book" $bibentry -}}
 {{- else if (eq $bibentry.type "chapter") -}}
-{{- partial "styles/ieee/types/chapter" $bibentry -}}
+{{- partial "styles/apa/types/chapter" $bibentry -}}
 {{- else if (eq $bibentry.type "broadcast") -}}
-{{- partial "styles/ieee/types/broadcast" $bibentry -}}
+{{- partial "styles/apa/types/broadcast" $bibentry -}}
 {{- else if or (eq $bibentry.type "article-journal") (eq $bibentry.type "article") -}}
-{{- partial "styles/ieee/types/article" $bibentry -}}
+{{- partial "styles/apa/types/article" $bibentry -}}
 {{- else if (eq $bibentry.type "paper-conference") -}}
-{{- partial "styles/ieee/types/conference-paper" $bibentry -}}
+{{- partial "styles/apa/types/conference-paper" $bibentry -}}
 {{- else if eq $bibentry.type "webpage" -}}
-{{- partial "styles/ieee/types/webpage" $bibentry -}}
+{{- partial "styles/apa/types/webpage" $bibentry -}}
 {{- else -}}
 {{- warnf "Bibliography type '%s' is not implemented. Defaulting to type 'book': %s" $bibentry.type $context.Position -}}
-{{- partial "styles/ieee/types/book" $bibentry -}}
+{{- partial "styles/apa/types/book" $bibentry -}}
 {{- end -}}

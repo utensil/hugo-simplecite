@@ -1,23 +1,33 @@
+{{/*
+    APA-Style Citation
+
+    Book Template : 
+  
+      Author Surname, First Initial. Second Initial. (Year). <i>Book title: Subtitle</i>. Place of Publication: Publisher. [DOI]
+  
+    Journal Template:
+  
+      Author, I. N. (Year). Title of the article. <i>Title of the Journal or Periodical, volume number(issue number)</i>, page numbers. [DOI]
+  
+    https://apastyle.apa.org/style-grammar-guidelines/references/examples
+*/}}
+
 {{- if index . "author" -}}
-{{- with partial "styles/ieee/parts/people" (dict "bibentries" . "personFieldName" "author") -}}
-{{ . }},&#32;
-{{- end -}}
-{{- else if index . "editor" -}}
-{{- with partial "styles/ieee/parts/people" (dict "bibentries" . "personFieldName" "editor") -}}
-{{ . }}, Eds.,&#32;
+{{- with partial "styles/apa/parts/people" (dict "bibentries" . "personFieldName" "author") -}}
+{{ . }}.&#32;
 {{- end -}}
 {{- end -}}
 
-{{- with partial "styles/ieee/parts/full-title" . -}}
-<em>{{ . }}</em>
+{{- with partial "styles/apa/parts/year" (dict "bibentries" . "timeFieldName" "issued") -}}
+{{ . }}.&#32;
 {{- end -}}
 
-{{- with partial "styles/ieee/parts/publisher" . -}}
-.&#32;{{ . }}
+{{- with partial "styles/apa/parts/full-title" . -}}
+<em>{{ . }}.&#32;</em>
 {{- end -}}
 
-{{- with partial "styles/ieee/parts/year" (dict "bibentries" . "timeFieldName" "issued") -}}
-, {{ . }}.&#32;
+{{- with partial "styles/apa/parts/publisher" . -}}
+{{ . }}.&#32;
 {{- end -}}
 
-{{- partial "styles/ieee/parts/doi-url" . -}}
+{{- partial "styles/apa/parts/doi-url" . -}}

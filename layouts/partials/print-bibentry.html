@@ -9,7 +9,7 @@
 {{- errorf "No bibliographic entry ID was provided: %s" .Position -}}
 {{- end -}}
 
-{{- $style := "ieee" -}}
+{{- $style := "apa" -}}
 {{- $stylePath := "styles/$style/main.html" -}}
 {{- $bibentries := partial "get-bibentries" $context -}}
 {{- $bibentry := partial "get-bibentry" (dict "context" $context "bibentries" $bibentries "bibentryId" $bibentryId) -}}
